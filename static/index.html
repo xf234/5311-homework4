@@ -22,6 +22,7 @@
 
 <body>
   <div>
+    <a href="horizontalBar.html">go to future</a>
     <input type="text" id="searchInput" placeholder="Search by name">
     <button id="sortButton">Sort Circles</button>
   </div>
@@ -54,7 +55,7 @@
 
       const colorScale = d3.scaleQuantile()
         .domain(candies.map(d => d.winpercent))
-        .range(["#E7F8E7", "#85D98C", "#00B440", "#008900"]);
+        .range(["#FFF8E1", "#FFCEA3", "#FEC100", "#FF9234"]);
 
       const radiusExtent = d3.extent(candies, d => d['winpercent']);
       const radiusScale = d3.scaleLinear().domain(radiusExtent).range([25, 50]);
@@ -62,11 +63,11 @@
       var forceNormal = d3.forceY(width / 2 + 50).strength(0.05);
       var forceSort = d3.forceY(function(d){
         let color = colorScale(d.winpercent);
-        if (color === "#E7F8E7"){
+        if (color === "#FFF8E1"){
           return 1600;
-        } else if (color === "#85D98C") {
+        } else if (color === "#FFCEA3") {
           return 1180;
-        }else if (color === "#00B440") {
+        }else if (color === "#FEC100") {
           return 780;
         } else {
           return 300;
