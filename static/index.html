@@ -8,7 +8,7 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <style>
     /* Style for the fixed position */
-    #infomation {
+    #information {
       position: fixed;
       top: 30px;
       right: 20px;
@@ -28,7 +28,7 @@
 
 
     <svg width="900" height="1800" id="bubbleChart" style="border: solid 1px black;"></svg>
-    <div id="infomation"></div>
+    <div id="information"></div>
     <svg width="500" height="500" id="barChart" style="border: solid 1px black; position:fixed;top: 200;
       right: 20;"></svg>
  
@@ -90,6 +90,8 @@
               .attr("cy", 0)
               .attr("fill", d => colorScale(d.winpercent))
               .attr('opacity', 0.8)
+              .on("mouseover", show_details)
+              .on("mouseout", remove_details)
               .call(d3.drag().on("start", dragstart)
                 .on("drag", dragging)
                 .on("end", dragend))
@@ -155,12 +157,28 @@
         d.fx = null;
         d.fy = null;
       }
+      
+      function show_details(d) {
+        const info = `<h4>Candy Information</h4>Candy: ${d.competitorname}<br/><br/>
+                Win Percent: ${d.winpercent}<br/><br/>
+                Sugar Percent: ${d.sugarpercent}<br/><br/>
+                `;
+    
+        d3.select("#information")
+          .html(info)
+          .style("display", "block");
+      }
+
+      function remove_details(){
+        d3.select("#information").html("");
+      }
     }
 
-    requestData();
+  requestData();
 
 
-  </script>
+</script>
+
 </body>
 
 </html>
