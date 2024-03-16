@@ -1,0 +1,598 @@
+[
+    {
+        "competitorname": "100 Grand",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.86000001,
+        "winpercent": 66.971725,
+        "ingredients": ["chocolate", "caramel", "crispedricewafer", "bar"]
+    },
+    {
+        "competitorname": "3 Musketeers",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.51099998,
+        "winpercent": 67.602936,
+        "ingredients": ["chocolate", "nougat", "bar"]
+    },
+    {
+        "competitorname": "One dime",
+        "sugarpercent": 0.011,
+        "pricepercent": 0.116,
+        "winpercent": 32.261086,
+        "ingredients": []
+    },
+    {
+        "competitorname": "One quarter",
+        "sugarpercent": 0.011,
+        "pricepercent": 0.51099998,
+        "winpercent": 46.116505,
+        "ingredients": []
+    },
+    {
+        "competitorname": "Air Heads",
+        "sugarpercent": 0.90600002,
+        "pricepercent": 0.51099998,
+        "winpercent": 52.341465,
+        "ingredients": ["fruity"]
+    },
+    {
+        "competitorname": "Almond Joy",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.76700002,
+        "winpercent": 50.347546,
+        "ingredients": ["chocolate", "peanutyalmondy", "bar"]
+    },
+    {
+        "competitorname": "Baby Ruth",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.76700002,
+        "winpercent": 56.914547,
+        "ingredients": ["chocolate", "caramel", "peanutyalmondy", "nougat", "bar"]
+    },
+    {
+        "competitorname": "Boston Baked Beans",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.51099998,
+        "winpercent": 23.417824,
+        "ingredients": ["peanutyalmondy", "pluribus"]
+    },
+    {
+        "competitorname": "Candy Corn",
+        "sugarpercent": 0.90600002,
+        "pricepercent": 0.32499999,
+        "winpercent": 38.010963,
+        "ingredients": ["pluribus"]
+    },
+    {
+        "competitorname": "Caramel Apple Pops",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.32499999,
+        "winpercent": 34.517681,
+        "ingredients": ["fruity", "caramel"]
+    },
+    {
+        "competitorname": "Charleston Chew",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.51099998,
+        "winpercent": 38.975037,
+        "ingredients": ["chocolate", "nougat", "bar"]
+    },
+    {
+        "competitorname": "Chewey Lemonhead Fruit Mix",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.51099998,
+        "winpercent": 36.017628,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Chiclets",
+        "sugarpercent": 0.046,
+        "pricepercent": 0.32499999,
+        "winpercent": 24.524988,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Dots",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.51099998,
+        "winpercent": 42.272076,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Dum Dums",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.034000002,
+        "winpercent": 39.460556,
+        "ingredients": ["fruity", "hard"]
+    },
+    {
+        "competitorname": "Fruit Chews",
+        "sugarpercent": 0.127,
+        "pricepercent": 0.034000002,
+        "winpercent": 43.088924,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Fun Dip",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.32499999,
+        "winpercent": 39.185505,
+        "ingredients": ["fruity", "hard"]
+    },
+    {
+        "competitorname": "Gobstopper",
+        "sugarpercent": 0.90600002,
+        "pricepercent": 0.45300001,
+        "winpercent": 46.783348,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Haribo Gold Bears",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.465,
+        "winpercent": 57.11974,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Haribo Happy Cola",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.465,
+        "winpercent": 34.158958,
+        "ingredients": ["pluribus"]
+    },
+    {
+        "competitorname": "Haribo Sour Bears",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.465,
+        "winpercent": 51.41243,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Haribo Twin Snakes",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.465,
+        "winpercent": 42.178772,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Hershey's Kisses",
+        "sugarpercent": 0.127,
+        "pricepercent": 0.093000002,
+        "winpercent": 55.375454,
+        "ingredients": ["chocolate", "pluribus"]
+    },
+    {
+        "competitorname": "Hershey's Krackel",
+        "sugarpercent": 0.43000001,
+        "pricepercent": 0.91799998,
+        "winpercent": 62.284481,
+        "ingredients": ["chocolate", "crispedricewafer", "bar"]
+    },
+    {
+        "competitorname": "Hershey's Milk Chocolate",
+        "sugarpercent": 0.43000001,
+        "pricepercent": 0.91799998,
+        "winpercent": 56.490501,
+        "ingredients": ["chocolate", "bar"]
+    },
+    {
+        "competitorname": "Hershey's Special Dark",
+        "sugarpercent": 0.43000001,
+        "pricepercent": 0.91799998,
+        "winpercent": 59.236122,
+        "ingredients": ["chocolate", "bar"]
+    },
+    {
+        "competitorname": "Jawbusters",
+        "sugarpercent": 0.093000002,
+        "pricepercent": 0.51099998,
+        "winpercent": 28.127439,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Junior Mints",
+        "sugarpercent": 0.197,
+        "pricepercent": 0.51099998,
+        "winpercent": 57.21925,
+        "ingredients": ["chocolate", "pluribus"]
+    },
+    {
+        "competitorname": "Kit Kat",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.51099998,
+        "winpercent": 76.7686,
+        "ingredients": ["chocolate", "crispedricewafer", "bar"]
+    },
+    {
+        "competitorname": "Laffy Taffy",
+        "sugarpercent": 0.22,
+        "pricepercent": 0.116,
+        "winpercent": 41.389557,
+        "ingredients": ["fruity"]
+    },
+    {
+        "competitorname": "Lemonhead",
+        "sugarpercent": 0.046,
+        "pricepercent": 0.104,
+        "winpercent": 39.141056,
+        "ingredients": ["fruity", "hard"]
+    },
+    {
+        "competitorname": "Lifesavers big ring gummies",
+        "sugarpercent": 0.26699999,
+        "pricepercent": 0.27900001,
+        "winpercent": 52.911392,
+        "ingredients": ["fruity"]
+    },
+    {
+        "competitorname": "Peanut butter M&M's",
+        "sugarpercent": 0.82499999,
+        "pricepercent": 0.65100002,
+        "winpercent": 71.46505,
+        "ingredients": ["chocolate", "peanutyalmondy", "pluribus"]
+    },
+    {
+        "competitorname": "M&M's",
+        "sugarpercent": 0.82499999,
+        "pricepercent": 0.65100002,
+        "winpercent": 66.574585,
+        "ingredients": ["chocolate", "pluribus"]
+    },
+    {
+        "competitorname": "Mike & Ike",
+        "sugarpercent": 0.87199998,
+        "pricepercent": 0.32499999,
+        "winpercent": 46.411716,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Milk Duds",
+        "sugarpercent": 0.30199999,
+        "pricepercent": 0.51099998,
+        "winpercent": 55.064072,
+        "ingredients": ["chocolate", "caramel", "pluribus"]
+    },
+    {
+        "competitorname": "Milky Way",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.65100002,
+        "winpercent": 73.099556,
+        "ingredients": ["chocolate", "caramel", "nougat", "bar"]
+    },
+    {
+        "competitorname": "Milky Way Midnight",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.44100001,
+        "winpercent": 60.800701,
+        "ingredients": ["chocolate", "caramel", "nougat", "bar"]
+    },
+    {
+        "competitorname": "Milky Way Simply Caramel",
+        "sugarpercent": 0.96499997,
+        "pricepercent": 0.86000001,
+        "winpercent": 64.35334,
+        "ingredients": ["chocolate", "caramel", "bar"]
+    },
+    {
+        "competitorname": "Mounds",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.86000001,
+        "winpercent": 47.829754,
+        "ingredients": ["chocolate", "bar"]
+    },
+    {
+        "competitorname": "Mr Good Bar",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.91799998,
+        "winpercent": 54.526451,
+        "ingredients": ["chocolate", "peanutyalmondy", "bar"]
+    },
+    {
+        "competitorname": "Nerds",
+        "sugarpercent": 0.84799999,
+        "pricepercent": 0.32499999,
+        "winpercent": 55.354046,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Nestle Butterfinger",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.76700002,
+        "winpercent": 70.735641,
+        "ingredients": ["chocolate", "peanutyalmondy", "bar"]
+    },
+    {
+        "competitorname": "Nestle Crunch",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.76700002,
+        "winpercent": 66.47068,
+        "ingredients": ["chocolate", "crispedricewafer", "bar"]
+    },
+    {
+        "competitorname": "Nik L Nip",
+        "sugarpercent": 0.197,
+        "pricepercent": 0.97600001,
+        "winpercent": 22.445341,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Now & Later",
+        "sugarpercent": 0.22,
+        "pricepercent": 0.32499999,
+        "winpercent": 39.4468,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Payday",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.76700002,
+        "winpercent": 46.296597,
+        "ingredients": ["peanutyalmondy", "nougat", "bar"]
+    },
+    {
+        "competitorname": "Peanut M&Ms",
+        "sugarpercent": 0.59299999,
+        "pricepercent": 0.65100002,
+        "winpercent": 69.483788,
+        "ingredients": ["chocolate", "peanutyalmondy", "pluribus"]
+    },
+    {
+        "competitorname": "Pixie Sticks",
+        "sugarpercent": 0.093000002,
+        "pricepercent": 0.023,
+        "winpercent": 37.722336,
+        "ingredients": ["pluribus"]
+    },
+    {
+        "competitorname": "Pop Rocks",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.83700001,
+        "winpercent": 41.265511,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Red vines",
+        "sugarpercent": 0.58099997,
+        "pricepercent": 0.116,
+        "winpercent": 37.348522,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Reese's Miniatures",
+        "sugarpercent": 0.034000002,
+        "pricepercent": 0.27900001,
+        "winpercent": 81.866257,
+        "ingredients": ["chocolate", "peanutyalmondy"]
+    },
+    {
+        "competitorname": "Reese's Peanut Butter cup",
+        "sugarpercent": 0.72000003,
+        "pricepercent": 0.65100002,
+        "winpercent": 84.18029,
+        "ingredients": ["chocolate", "peanutyalmondy"]
+    },
+    {
+        "competitorname": "Reese's pieces",
+        "sugarpercent": 0.40599999,
+        "pricepercent": 0.65100002,
+        "winpercent": 73.43499,
+        "ingredients": ["chocolate", "peanutyalmondy", "pluribus"]
+    },
+    {
+        "competitorname": "Reese's stuffed with pieces",
+        "sugarpercent": 0.98799998,
+        "pricepercent": 0.65100002,
+        "winpercent": 72.887901,
+        "ingredients": ["chocolate", "peanutyalmondy"]
+    },
+    {
+        "competitorname": "Ring pop",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.96499997,
+        "winpercent": 35.290756,
+        "ingredients": ["fruity", "hard"]
+    },
+    {
+        "competitorname": "Rolo",
+        "sugarpercent": 0.86000001,
+        "pricepercent": 0.86000001,
+        "winpercent": 65.716286,
+        "ingredients": ["chocolate", "caramel", "pluribus"]
+    },
+    {
+        "competitorname": "Root Beer Barrels",
+        "sugarpercent": 0.73199999,
+        "pricepercent": 0.068999998,
+        "winpercent": 29.703691,
+        "ingredients": ["hard", "pluribus"]
+    },
+    {
+        "competitorname": "Runts",
+        "sugarpercent": 0.87199998,
+        "pricepercent": 0.27900001,
+        "winpercent": 42.849144,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Sixlets",
+        "sugarpercent": 0.22,
+        "pricepercent": 0.081,
+        "winpercent": 34.722,
+        "ingredients": ["chocolate", "pluribus"]
+    },
+    {
+        "competitorname": "Skittles original",
+        "sugarpercent": 0.94099998,
+        "pricepercent": 0.22,
+        "winpercent": 63.08514,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Skittles wildberry",
+        "sugarpercent": 0.94099998,
+        "pricepercent": 0.22,
+        "winpercent": 55.103695,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Nestle Smarties",
+        "sugarpercent": 0.26699999,
+        "pricepercent": 0.97600001,
+        "winpercent": 37.887188,
+        "ingredients": ["chocolate", "pluribus"]
+    },
+    {
+        "competitorname": "Smarties candy",
+        "sugarpercent": 0.26699999,
+        "pricepercent": 0.116,
+        "winpercent": 45.995827,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Snickers",
+        "sugarpercent": 0.546,
+        "pricepercent": 0.65100002,
+        "winpercent": 76.673782,
+        "ingredients": ["chocolate", "caramel", "peanutyalmondy", "nougat", "bar"]
+    },
+    {
+        "competitorname": "Snickers Crisper",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.65100002,
+        "winpercent": 59.529251,
+        "ingredients": ["chocolate", "caramel", "peanutyalmondy", "crispedricewafer", "bar"]
+    },
+    {
+        "competitorname": "Sour Patch Kids",
+        "sugarpercent": 0.068999998,
+        "pricepercent": 0.116,
+        "winpercent": 59.863998,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Sour Patch Tricksters",
+        "sugarpercent": 0.068999998,
+        "pricepercent": 0.116,
+        "winpercent": 52.825947,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Starburst",
+        "sugarpercent": 0.15099999,
+        "pricepercent": 0.22,
+        "winpercent": 67.037628,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Strawberry bon bons",
+        "sugarpercent": 0.56900001,
+        "pricepercent": 0.057999998,
+        "winpercent": 34.578991,
+        "ingredients": ["fruity", "hard", "pluribus"]
+    },
+    {
+        "competitorname": "Sugar Babies",
+        "sugarpercent": 0.96499997,
+        "pricepercent": 0.76700002,
+        "winpercent": 33.43755,
+        "ingredients": ["caramel", "pluribus"]
+    },
+    {
+        "competitorname": "Sugar Daddy",
+        "sugarpercent": 0.41800001,
+        "pricepercent": 0.32499999,
+        "winpercent": 32.230995,
+        "ingredients": ["caramel"]
+    },
+    {
+        "competitorname": "Super Bubble",
+        "sugarpercent": 0.162,
+        "pricepercent": 0.116,
+        "winpercent": 27.303865,
+        "ingredients": ["fruity"]
+    },
+    {
+        "competitorname": "Swedish Fish",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.755,
+        "winpercent": 54.861111,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Tootsie Pop",
+        "sugarpercent": 0.60399997,
+        "pricepercent": 0.32499999,
+        "winpercent": 48.982651,
+        "ingredients": ["chocolate", "fruity", "hard"]
+    },
+    {
+        "competitorname": "Tootsie Roll Juniors",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.51099998,
+        "winpercent": 43.068897,
+        "ingredients": ["chocolate"]
+    },
+    {
+        "competitorname": "Tootsie Roll Midgies",
+        "sugarpercent": 0.17399999,
+        "pricepercent": 0.011,
+        "winpercent": 45.736748,
+        "ingredients": ["chocolate", "pluribus"]
+    },
+    {
+        "competitorname": "Tootsie Roll Snack Bars",
+        "sugarpercent": 0.465,
+        "pricepercent": 0.32499999,
+        "winpercent": 49.653503,
+        "ingredients": ["chocolate", "bar"]
+    },
+    {
+        "competitorname": "Trolli Sour Bites",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.255,
+        "winpercent": 47.173229,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Twix",
+        "sugarpercent": 0.546,
+        "pricepercent": 0.90600002,
+        "winpercent": 81.642914,
+        "ingredients": ["chocolate", "caramel", "crispedricewafer", "bar"]
+    },
+    {
+        "competitorname": "Twizzlers",
+        "sugarpercent": 0.22,
+        "pricepercent": 0.116,
+        "winpercent": 45.466282,
+        "ingredients": ["fruity"]
+    },
+    {
+        "competitorname": "Warheads",
+        "sugarpercent": 0.093000002,
+        "pricepercent": 0.116,
+        "winpercent": 39.011898,
+        "ingredients": ["fruity", "hard"]
+    },
+    {
+        "competitorname": "Welch's Fruit Snacks",
+        "sugarpercent": 0.31299999,
+        "pricepercent": 0.31299999,
+        "winpercent": 44.375519,
+        "ingredients": ["fruity", "pluribus"]
+    },
+    {
+        "competitorname": "Werther's Original Caramel",
+        "sugarpercent": 0.186,
+        "pricepercent": 0.26699999,
+        "winpercent": 41.904308,
+        "ingredients": ["caramel", "hard"]
+    },
+    {
+        "competitorname": "Whoppers",
+        "sugarpercent": 0.87199998,
+        "pricepercent": 0.84799999,
+        "winpercent": 49.524113,
+        "ingredients": ["chocolate", "crispedricewafer", "pluribus"]
+    }
+]
+

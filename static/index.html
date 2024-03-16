@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3 Bubble Chart with Search</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+    /* Style for the fixed position */
+    #infomation {
+      position: fixed;
+      top: 30px;
+      right: 20px;
+      width: 500px;
+      height: 150px;
+      border: solid 1px red;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div>
+    <input type="text" id="searchInput" placeholder="Search by name">
+    <button id="sortButton">Sort Circles</button>
+  </div>
+
+
+    <svg width="900" height="1800" id="bubbleChart" style="border: solid 1px black;"></svg>
+    <div id="infomation"></div>
+    <svg width="500" height="500" id="barChart" style="border: solid 1px black; position:fixed;top: 200;
+      right: 20;"></svg>
+ 
+
+ 
+
+
+
+  <script>
+    const layer = d3.select("#bubbleChart").append("g");
+    const width = d3.select("#bubbleChart").attr("width");
+    const height = d3.select("#bubbleChart").attr("height");
+    console.log(width, height);
+
+    const searchInput = document.getElementById('searchInput');
+    const sortButton = document.getElementById('sortButton');
+
+    var whetherSort = false;
+
+    const requestData = async function () {
+      const candies = await d3.json("data/candy_data.json");
+      console.log(candies);
+
+      const colorScale = d3.scaleQuantile()
+        .domain(candies.map(d => d.winpercent))
+        .range(["#E7F8E7", "#85D98C", "#00B440", "#008900"]);
+
+      const radiusExtent = d3.extent(candies, d => d['winpercent']);
+      const radiusScale = d3.scaleLinear().domain(radiusExtent).range([25, 50]);
+
+      var forceNormal = d3.forceY(width / 2 + 50).strength(0.05);
+      var forceSort = d3.forceY(function(d){
+        let color = colorScale(d.winpercent);
+        if (color === "#E7F8E7"){
+          return 1600;
+        } else if (color === "#85D98C") {
+          return 1180;
+        }else if (color === "#00B440") {
+          return 780;
+        } else {
+          return 300;
+        }
+      }).strength(0.05);         
+      
+      const simulation = d3.forceSimulation(candies)
+        .force("x", d3.forceX(width / 2).strength(0.05))
+        .force("y", forceNormal)
+        .force("collide", d3.forceCollide(d => radiusScale(d.winpercent)+5))
+        .on("tick", render);
+
+      function render() {
+
+        const circles = layer.selectAll("circle.bubble").data(candies)
+          .join(
+            enter => enter.append("circle")
+              .attr("class", "bubble")
+              .attr("r", d => radiusScale(d.winpercent))
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("fill", d => colorScale(d.winpercent))
+              .attr('opacity', 0.8)
+              .call(d3.drag().on("start", dragstart)
+                .on("drag", dragging)
+                .on("end", dragend))
+          )
+          .attr("transform", d => `translate(${d.x},${d.y})`)
+          ;
+
+        const labels = layer.selectAll("text.label")
+          .data(candies)
+          .join("text")
+          .attr("class", "label")
+          .attr("text-anchor", "middle")
+          .style("font-size", "10px")
+          .text(d => d.competitorname.length > 15 ? d.competitorname.substring(0, 10) + '...' : d.competitorname)
+          .attr("transform", d => `translate(${d.x},${d.y})`);
+
+        searchInput.addEventListener('input', function () {
+          const searchText = this.value.trim().toLowerCase();
+          circles.attr('display', d => d.competitorname.toLowerCase().includes(searchText) ? 'block' : 'none');
+          labels.attr('display', d => d.competitorname.toLowerCase().includes(searchText) ? 'block' : 'none');
+        });
+      }
+
+      render();
+
+      d3.select("#sortButton").on('click', function () {
+        if (whetherSort == false) {
+          simulation
+            .force('y', forceSort)
+            .alphaTarget(0.5)
+            .restart()
+          whetherSort = true;
+        } else {
+          
+          simulation
+            .force('y', forceNormal)
+            .alphaTarget(0.08)
+            .restart()
+          whetherSort = false;          
+        }
+      }
+      );
+
+      function dragstart(event, d) {
+        if (!event.active) {
+          simulation.alphaTarget(0.08).restart();
+        }
+
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragging(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragend(event, d) {
+
+        if (!event.active) {
+          simulation.alphaTarget(0);
+        }
+        d.fx = null;
+        d.fy = null;
+      }
+    }
+
+    requestData();
+
+
+  </script>
+</body>
+
+</html>
