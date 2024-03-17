@@ -1,12 +1,12 @@
 [
-    { "CANDY TYPE": "Chocolate", "number": 19.9 },
-    { "CANDY TYPE": "Fruit", "number": 10.3 },
-    { "CANDY TYPE": "Peanuts & nuts", "number": 10.1 },
-    { "CANDY TYPE": "Crispy", "number": 9.0 },
-    { "CANDY TYPE": "Caramel", "number": 3.4 },
-    { "CANDY TYPE": "Nougat", "number": 2.4 },
-    { "CANDY TYPE": "Multi-piece", "number": -0.2 },
-    { "CANDY TYPE": "Candy bar", "number": -0.7 },
-    { "CANDY TYPE": "Hard candy", "number": -4.9 }
+    { "type": "Chocolate", "number": 19.9, "label": "chocolate"},
+    { "type": "Fruit", "number": 10.3, "label": "fruity" },
+    { "type": "Peanuts & nuts", "number": 10.1, "label": "peanutyalmondy" },
+    { "type": "Crispy", "number": 9.0, "label": "crispedricewafer" },
+    { "type": "Caramel", "number": 3.4, "label": "caramel" },
+    { "type": "Nougat", "number": 2.4, "label": "nougat" },
+    { "type": "Multi-piece", "number": -0.2, "label": "pluribus" },
+    { "type": "Candy bar", "number": -0.7, "label": "bar" },
+    { "type": "Hard candy", "number": -4.9, "label": "hard" }
 ]
   

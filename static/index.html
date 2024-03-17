@@ -7,34 +7,73 @@
   <title>D3 Bubble Chart with Search</title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <style>
-    /* Style for the fixed position */
     #information {
       position: fixed;
       top: 30px;
-      right: 20px;
+      right: 40px;
       width: 500px;
       height: 150px;
       border: solid 1px red;
     }
 
+    #barTitle {
+      position: fixed;
+      top: 200px;
+      right: 120px;    
+    }
+
+    .y.axis path,
+    .y.axis line {
+            fill: none;
+            stroke: none;
+    }
+
+    .bar.positive {
+      fill: #D5F7DA;
+    }
+
+    .bar.negative {
+      fill: #FFD79B;
+    }
+    
   </style>
 </head>
 
 <body>
   <div>
-    <a href="horizontalBar.html">go to future</a>
+    <a href="../../5311-homework1/static/index.html">go to future</a>
     <input type="text" id="searchInput" placeholder="Search by name">
     <button id="sortButton">Sort Circles</button>
   </div>
 
 
-    <svg width="900" height="1800" id="bubbleChart" style="border: solid 1px black;"></svg>
-    <div id="information"></div>
-    <svg width="500" height="500" id="barChart" style="border: solid 1px black; position:fixed;top: 200;
-      right: 20;"></svg>
- 
-
- 
+  <svg width="900" height="1800" id="bubbleChart" style="border: solid 1px black;"></svg>
+  <div id="information">
+    <h4>Hover to see Candy Information</h4>
+    <table>
+    
+      <tbody>
+          <tr>
+              <td>Candy Name:</td>
+              <td id="candyName"></td>
+          
+          </tr>
+          <tr>
+              <td>Win Percent:</td>
+              <td id="winPercent"></td>
+             
+          </tr>
+          <tr>
+              <td>Sugar Percent:</td>
+              <td id="sugarPercent"></td>
+         
+          </tr>
+      </tbody>
+  </table>
+  </div>
+  <p id="barTitle">How much win percentage of a candy brand will rise <br>if it is one of the following types</p>
+  <svg width="500" height="500" id="barChart" style="border: solid 1px black; position:fixed;top: 200;
+      right: 40;"></svg>
 
 
 
@@ -49,9 +88,20 @@
 
     var whetherSort = false;
 
+    const svgBar = d3.select("#barChart");
+    const marginBar = { top: 70, right: 40, bottom: 20, left: 120 };
+    const widthBar = svgBar.attr("width");
+    const heightBar = svgBar.attr("height");
+    const chartWidth = widthBar - marginBar.left - marginBar.right;
+    const chartHeight = heightBar - marginBar.top - marginBar.bottom;
+    const chartArea = svgBar.append("g")
+      .attr("transform", "translate(" + marginBar.left + "," + marginBar.top + ")");
+
     const requestData = async function () {
       const candies = await d3.json("data/candy_data.json");
       console.log(candies);
+      const types = await d3.json("data/type_win.json");
+      console.log(types);
 
       const colorScale = d3.scaleQuantile()
         .domain(candies.map(d => d.winpercent))
@@ -61,23 +111,23 @@
       const radiusScale = d3.scaleLinear().domain(radiusExtent).range([25, 50]);
 
       var forceNormal = d3.forceY(width / 2 + 50).strength(0.05);
-      var forceSort = d3.forceY(function(d){
+      var forceSort = d3.forceY(function (d) {
         let color = colorScale(d.winpercent);
-        if (color === "#FFF8E1"){
+        if (color === "#FFF8E1") {
           return 1600;
         } else if (color === "#FFCEA3") {
           return 1180;
-        }else if (color === "#FEC100") {
+        } else if (color === "#FEC100") {
           return 780;
         } else {
           return 300;
         }
-      }).strength(0.05);         
-      
+      }).strength(0.05);
+
       const simulation = d3.forceSimulation(candies)
         .force("x", d3.forceX(width / 2).strength(0.05))
         .force("y", forceNormal)
-        .force("collide", d3.forceCollide(d => radiusScale(d.winpercent)+5))
+        .force("collide", d3.forceCollide(d => radiusScale(d.winpercent) + 5))
         .on("tick", render);
 
       function render() {
@@ -107,7 +157,8 @@
           .attr("text-anchor", "middle")
           .style("font-size", "10px")
           .text(d => d.competitorname.length > 15 ? d.competitorname.substring(0, 10) + '...' : d.competitorname)
-          .attr("transform", d => `translate(${d.x},${d.y})`);
+          .attr("transform", d => `translate(${d.x},${d.y})`)
+          .on("mouseover", show_details);
 
         searchInput.addEventListener('input', function () {
           const searchText = this.value.trim().toLowerCase();
@@ -126,15 +177,53 @@
             .restart()
           whetherSort = true;
         } else {
-          
+
           simulation
             .force('y', forceNormal)
             .alphaTarget(0.08)
             .restart()
-          whetherSort = false;          
+          whetherSort = false;
         }
       }
       );
+
+      ///////////////////////////////////////////////////////////////////////////////////
+
+      let typeScale = d3.scaleBand()
+        .domain(types.map(d => d.type))
+        .range([0, chartHeight])
+        .padding(0.4);
+
+      let valueScale = d3.scaleLinear()
+        .domain([d3.min(types, d => Math.min(d.number, 0)), d3.max(types, d => Math.max(d.number, 0))])
+        .range([0, chartWidth]);
+
+      let leftAxis = d3.axisLeft(typeScale);
+      svgBar.append('g')
+        .attr('class', 'y axis')
+        .attr('transform', `translate(${marginBar.left - 30},${marginBar.top})`)
+        .call(leftAxis);
+
+      chartArea.selectAll(".bar")
+        .data(types)
+        .enter().append("rect")
+        .attr("class", d => "bar " + (d.number < 0 ? "negative" : "positive"))
+        .attr("x", d => (d.number < 0 ? valueScale(d.number) : valueScale(0)))
+        .attr("y", d => typeScale(d.type))
+        .attr("width", d => Math.abs(valueScale(0) - valueScale(d.number)))
+        .attr("height", typeScale.bandwidth());
+
+      chartArea.selectAll(".bar-label")
+        .data(types, d => d.number)
+        .enter()
+        .append("text")
+        .attr("class", "bar-label")
+        .attr("x", d => (d.number < 0 ? valueScale(d.number) - 35 : valueScale(d.number)) + 5)
+        .attr("y", d => typeScale(d.type) + typeScale.bandwidth() / 2)
+        .text(d => d.number + "%")
+        .attr("alignment-baseline", "middle")
+        .attr("font-size", "12px")
+        .attr("font-family", "Roboto");
 
       function dragstart(event, d) {
         if (!event.active) {
@@ -158,27 +247,50 @@
         d.fx = null;
         d.fy = null;
       }
-      
+
       function show_details(d) {
-        const info = `<h4>Candy Information</h4>Candy: ${d.competitorname}<br/><br/>
-                Win Percent: ${d.winpercent}<br/><br/>
-                Sugar Percent: ${d.sugarpercent}<br/><br/>
-                `;
-    
-        d3.select("#information")
-          .html(info)
-          .style("display", "block");
+
+        d3.select("#candyName")
+          .text(d.competitorname);
+        d3.select("#winPercent")
+          .text(d.winpercent);
+        d3.select("#sugarPercent")
+          .text(d.sugarpercent);
+
+        ingredients = d.ingredients;
+        console.log(ingredients);
+
+        if (ingredients.length > 0){
+          console.log("have ingredients",);
+          d3.selectAll(".bar")
+            .filter(barData => {
+              console.log(barData.type, ingredients, ingredients.includes(barData.type));
+              return ingredients.includes(barData.label)})
+            .style("fill", barData => barData.number < 0 ? "#FFAE34" : "#78DD87");
+        }
+
       }
 
-      function remove_details(){
-        d3.select("#information").html("");
+      function remove_details() {
+        d3.select("#candyName")
+          .text("");
+        d3.select("#winPercent")
+          .text("");
+        d3.select("#sugarPercent")
+          .text("");
+
+        d3.select("#barChart").selectAll(".bar.positive")
+          .style("fill", "#D5F7DA");
+
+        d3.select("#barChart").selectAll(".bar.negative")
+          .style("fill", "#FFD79B");
       }
     }
 
-  requestData();
+    requestData();
 
 
-</script>
+  </script>
 
 </body>
 
