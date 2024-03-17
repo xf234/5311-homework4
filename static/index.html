@@ -6,87 +6,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D3 Bubble Chart with Search</title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <style>
-    #information {
-      position: fixed;
-      top: 30px;
-      right: 40px;
-      width: 500px;
-      height: 150px;
-      border: solid 1px red;
-    }
-
-    #barTitle {
-      position: fixed;
-      top: 200px;
-      right: 120px;    
-    }
-
-    .y.axis path,
-    .y.axis line {
-            fill: none;
-            stroke: none;
-    }
-
-    .bar.positive {
-      fill: #D5F7DA;
-    }
-
-    .bar.negative {
-      fill: #FFD79B;
-    }
-    
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <p>1. change button content <br>
-  2. find picture, make the bar chart longer <br>
-  3. dinamically change bubble chart length <br>
-  4. start css style <br>
-  4.1 add title and explanation <br>
-  4.2 change font <br>
-  4.3 style seach bar and button <br>
-  4.4 add some halloween image <br>
-  5. debug drag <br>
-  6. finish report
-  </p>
+  <img id="spider"src="pictures/spider.png" alt="spider">
+  <img id="ghost"src="pictures/ghost.png" alt="ghost">
+  <img id="candy_bag"src="pictures/candy-bag.png" alt="candy_bag">
+
+
+  <h2>Trick or Treat <br> Popularity of Halloween Candy</h2>
+  <div style="width: 800px;">
+    <p>
+      During Halloween, it's important to give out good treats to avoid any mischief from disappointed
+      trick-or-treaters.
+      To help people choose the best candy for Halloween, an experiment was conducted where various types of fun-sized
+      candies were compared, and people's preferences were used to determine the best ones.
+    </p>
+    <p>
+      The left bubble chart use circle size and color difference to show the popularity level and the right
+      bar chart shows how much win percentage of a candy brand will rise if it belongs to one/several of the following
+      types
+    </p>
+    <p>
+      <span style="color: #FF7A00; font-size: 18px;"> Hover</span> to see detailed information of a candy brand 
+      and which types it belongs to <br>
+
+      <span style="color: #FF7A00; font-size: 18px;"> Click</span> the button to sort the circles based on popularity level <br>
+      <span style="color: #FF7A00; font-size: 18px;"> Search</span> the brand you want
+    </p>
+
+  </div>
+
+
   <div>
-    <a href="../../5311-homework1/static/index.html">go to future</a>
     <input type="text" id="searchInput" placeholder="Search by name">
     <button id="sortButton">Sort Circles</button>
   </div>
 
 
-  <svg width="900" height="1800" id="bubbleChart" style="border: solid 1px black;"></svg>
+  <svg width="900" height="900" id="bubbleChart"></svg>
+
+  <div id="board"></div>
   <div id="information">
-    <h4>Hover to see Candy Information</h4>
+    <p> <b>Hover to see Candy Information</b></p>
     <table>
-    
+
       <tbody>
-          <tr>
-              <td>Candy Name:</td>
-              <td id="candyName"></td>
-          
-          </tr>
-          <tr>
-              <td>Win Percent:</td>
-              <td id="winPercent"></td>
-             
-          </tr>
-          <tr>
-              <td>Sugar Percent:</td>
-              <td id="sugarPercent"></td>
-         
-          </tr>
+        <tr>
+          <td>Candy Name:</td>
+          <td id="candyName"></td>
+
+        </tr>
+        <tr>
+          <td>Win Percent:</td>
+          <td id="winPercent"></td>
+
+        </tr>
+        <tr>
+          <td>Sugar Percent:</td>
+          <td id="sugarPercent"></td>
+
+        </tr>
       </tbody>
-  </table>
+    </table>
   </div>
   <p id="barTitle">How much win percentage of a candy brand will rise <br>if it is one of the following types</p>
-  <svg width="500" height="500" id="barChart" style="border: solid 1px black; position:fixed;top: 200;
-      right: 40;"></svg>
+  <svg width="500" height="570" id="barChart" style="position:fixed;top: 200;right: 40;"></svg>
 
-
+  <p id="copyright">All the free images are from <a href="https://www.flaticon.com/">Flat icon</a> website</p>
 
   <script>
     const layer = d3.select("#bubbleChart").append("g");
@@ -100,7 +88,7 @@
     var whetherSort = false;
 
     const svgBar = d3.select("#barChart");
-    const marginBar = { top: 70, right: 40, bottom: 20, left: 120 };
+    const marginBar = { top: 70, right: 40, bottom: 0, left: 180 };
     const widthBar = svgBar.attr("width");
     const heightBar = svgBar.attr("height");
     const chartWidth = widthBar - marginBar.left - marginBar.right;
@@ -182,13 +170,18 @@
 
       d3.select("#sortButton").on('click', function () {
         if (whetherSort == false) {
+          d3.select("#bubbleChart")
+            .attr("height", 1800);
+          d3.select(this).text("Combine");
           simulation
             .force('y', forceSort)
             .alphaTarget(0.5)
             .restart()
           whetherSort = true;
         } else {
-
+          d3.select("#bubbleChart")
+            .attr("height", 900);
+          d3.select(this).text("Sort Circles");
           simulation
             .force('y', forceNormal)
             .alphaTarget(0.08)
@@ -203,7 +196,7 @@
       let typeScale = d3.scaleBand()
         .domain(types.map(d => d.type))
         .range([0, chartHeight])
-        .padding(0.4);
+        .padding(0.6);
 
       let valueScale = d3.scaleLinear()
         .domain([d3.min(types, d => Math.min(d.number, 0)), d3.max(types, d => Math.max(d.number, 0))])
@@ -212,8 +205,34 @@
       let leftAxis = d3.axisLeft(typeScale);
       svgBar.append('g')
         .attr('class', 'y axis')
-        .attr('transform', `translate(${marginBar.left - 30},${marginBar.top})`)
+        .attr('transform', `translate(${marginBar.left - 90},${marginBar.top})`)
         .call(leftAxis);
+      //all the pngs are from free website flaticon !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      const pngs = ["chocolate", "fruit", "nuts", "crispy", "caramel",
+        "nougat", "multiPiece", "bar", "hard"];
+      pngs.forEach(
+        (d, i) => { display_png(i, d) }
+      );
+
+      // svgBar.append("svg:image")
+      //   .attr("xlink:href", "pictures/chocolate.png")  
+      //   .attr("width", 25) 
+      //   .attr("height", 25)  
+      //   .attr("x", marginBar.left - 90)  
+      //   .attr("y", 95); 
+
+      // svgBar.append("svg:image")
+      //   .attr("xlink:href", "pictures/fruit.png")  
+      //   .attr("width", 25) 
+      //   .attr("height", 25)  
+      //   .attr("x", marginBar.left - 90)  
+      //   .attr("y", 95 + 55); 
+      // svgBar.append("svg:image")
+      //   .attr("xlink:href", "pictures/nuts.png")  
+      //   .attr("width", 25) 
+      //   .attr("height", 25)  
+      //   .attr("x", marginBar.left - 90)  
+      //   .attr("y", 95 + 55*2); 
 
       chartArea.selectAll(".bar")
         .data(types)
@@ -236,7 +255,7 @@
         .attr("font-size", "12px")
         .attr("font-family", "Roboto");
 
-      function dragstart(event, d) {
+      function dragstart(d) {
         if (!event.active) {
           simulation.alphaTarget(0.08).restart();
         }
@@ -245,12 +264,12 @@
         d.fy = event.y;
       }
 
-      function dragging(event, d) {
+      function dragging(d) {
         d.fx = event.x;
         d.fy = event.y;
       }
 
-      function dragend(event, d) {
+      function dragend(d) {
 
         if (!event.active) {
           simulation.alphaTarget(0);
@@ -271,12 +290,13 @@
         ingredients = d.ingredients;
         console.log(ingredients);
 
-        if (ingredients.length > 0){
+        if (ingredients.length > 0) {
           console.log("have ingredients",);
           d3.selectAll(".bar")
             .filter(barData => {
               console.log(barData.type, ingredients, ingredients.includes(barData.type));
-              return ingredients.includes(barData.label)})
+              return ingredients.includes(barData.label)
+            })
             .style("fill", barData => barData.number < 0 ? "#FFAE34" : "#78DD87");
         }
 
@@ -295,6 +315,15 @@
 
         d3.select("#barChart").selectAll(".bar.negative")
           .style("fill", "#FFD79B");
+      }
+
+      function display_png(i, str) {
+        svgBar.append("svg:image")
+          .attr("xlink:href", "pictures/" + str + ".png")
+          .attr("width", 25)
+          .attr("height", 25)
+          .attr("x", marginBar.left - 90)
+          .attr("y", 95 + 53 * i);
       }
     }
 
